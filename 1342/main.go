@@ -25,15 +25,20 @@ func main() {
 	bNum := strconv.FormatInt(int64(num1), 2)
 	fmt.Println("bNum: ", bNum)
 	// fmt.Println("left 1:", (bNum >> 1))
-	var step2 int = 0
-	for num1 != 0 {
-		if num1&1 == 1 { //奇数
-			num1 = num1 >> 1
-			step2 += 2
-		} else {
-			num1 = num1 >> 1
-		}
+	var step2, count int
+	step2, count = 0, 0
+	if num1&1 == 1 {
+		step2++
 	}
-
+	num1 = num1 >> 1
+	for num1 != 0 {
+		count++
+		if num1&1 == 1 { //奇数
+			step2 += count
+		}
+		num1 = num1 >> 1
+		fmt.Printf("num1:%b\n", num1)
+	}
+	step2++
 	fmt.Println("step2: ", step2)
 }
